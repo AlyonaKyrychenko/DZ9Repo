@@ -6,12 +6,12 @@ namespace AppLogger
     {
         public void GenerateInfo()
         {
-            Logsys.Logger.AddEventInfo(LoggerEnum.SeverityLevel.Info, "Start method: nameof(GenerateInfo)");
+            Logsys.Logger.AddEvent(LoggerEnum.SeverityLevel.Info, "Start method: nameof(GenerateInfo)", false);
         }
 
         public void GenerateWarning()
         {
-            Logsys.Logger.AddEvent(LoggerEnum.SeverityLevel.Warning, "Start method: nameof(GenerateWarning)");
+            Logsys.Logger.AddEvent(LoggerEnum.SeverityLevel.Warning, "Start method: nameof(GenerateWarning)", true);
         }
 
         public void GenerateError()

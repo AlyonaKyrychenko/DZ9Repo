@@ -24,17 +24,17 @@ namespace AppLogger
 
         private string[] log = new string[0];
 
-        public void AddEvent(LoggerEnum.SeverityLevel severity, string text)
+        public void AddEvent(LoggerEnum.SeverityLevel severity, string text, bool needTrace)
         {
             int size = this.log.Length;
             Array.Resize(ref this.log, size + 1);
-            this.log[size] = $"{{{severity.ToString()}}}:{{{text}}}\n{Environment.StackTrace});";
-        }
-        public void AddEventInfo(LoggerEnum.SeverityLevel severity, string text)
-        {
-            int size = this.log.Length;
-            Array.Resize(ref this.log, size + 1);
-            this.log[size] = $"{{{severity.ToString()}}}:{{{text}}});";
+            if (needTrace)
+            {
+                this.log[size] = $"{{{severity.ToString()}}}:{{{text}}}\n{Environment.StackTrace}";
+            }
+            else {
+                this.log[size] = $"{{{severity.ToString()}}}:{{{text}}})";
+            }
         }
         public void ShowLog()
         {

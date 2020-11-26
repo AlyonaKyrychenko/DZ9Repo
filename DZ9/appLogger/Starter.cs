@@ -34,10 +34,13 @@ namespace AppLogger
                             Logsys.Logger.SaveToFile();
                             break;
                         }
-                        catch
+                        catch (Exception e)
                         {
-                            Logsys.Logger.AddEvent(LoggerEnum.SeverityLevel.Error, "I broke a toilet");
-                            Logsys.Logger.SaveToFile();
+                            if (e.Message == "I broke a toilet")
+                            {
+                                Logsys.Logger.AddEvent(LoggerEnum.SeverityLevel.Error, "Action failed by reason:", true);
+                                Logsys.Logger.SaveToFile();
+                            }
                         }
                         break;
                 }
