@@ -28,7 +28,13 @@ namespace AppLogger
         {
             int size = this.log.Length;
             Array.Resize(ref this.log, size + 1);
-            this.log[size] = $"{{{severity.ToString()}}}:{{{text}}}";
+            this.log[size] = $"{{{severity.ToString()}}}:{{{text}}}\n{Environment.StackTrace});";
+        }
+        public void AddEventInfo(LoggerEnum.SeverityLevel severity, string text)
+        {
+            int size = this.log.Length;
+            Array.Resize(ref this.log, size + 1);
+            this.log[size] = $"{{{severity.ToString()}}}:{{{text}}});";
         }
         public void ShowLog()
         {
