@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\appLogger\appLogger.csproj" />
+    <ProjectReference Include="..\appLogger\AppLogger.csproj" />
   </ItemGroup>
 
 </Project>

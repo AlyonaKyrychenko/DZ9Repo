@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace appLogger
+namespace AppLogger
 {
     public class Starter
     {
@@ -19,21 +19,25 @@ namespace appLogger
 
                     case 1:
                         action.GenerateInfo();
+                        Logsys.Logger.SaveToFile();
                         break;
 
                     case 2:
                         action.GenerateWarning();
+                        Logsys.Logger.SaveToFile();
                         break;
 
                     case 3:
                         try
                         {
                             action.GenerateError();
+                            Logsys.Logger.SaveToFile();
                             break;
                         }
                         catch
                         {
-                            Logsys.Logger.addEvent(SeverityLevel.Error, "I broke a toilet");
+                            Logsys.Logger.AddEvent(LoggerEnum.SeverityLevel.Error, "I broke a toilet");
+                            Logsys.Logger.SaveToFile();
                         }
                         break;
                 }

@@ -1,36 +1,30 @@
 ﻿using System;
 using System.IO;
 
-namespace appLogger
+namespace AppLogger
 {
-    public enum SeverityLevel
-    {
-        Info,
-        Warning,
-        Error
-    }
 
     public sealed class Logsys
     {
         private Logsys() { }
 
-        private static Logsys loggerBody = null;
+        private static Logsys Instance = null;
         public static Logsys Logger
         {
             get
             {
-                if (loggerBody == null)
+                if (Instance == null)
                 {
-                    loggerBody = new Logsys();
+                    Instance = new Logsys();
                 }
 
-                return loggerBody;
+                return Instance;
             }
         }
 
         private string[] log = new string[0];
 
-        public void addEvent(SeverityLevel severity, string text)
+        public void AddEvent(LoggerEnum.SeverityLevel severity, string text)
         {
             int size = this.log.Length;
             Array.Resize(ref this.log, size + 1);
