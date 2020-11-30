@@ -1,12 +1,21 @@
 ﻿using System;
 
-namespace DZ9
+namespace AppLogger
 {
-    class Program
+    internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            bool exit = false;
+            Starter starter = new Starter();
+
+            while (!exit)
+            {
+                Console.Clear();
+                starter.Run();
+                Logsys.Logger.ShowLog();
+                Console.ReadKey();
+            }
         }
     }
 }
